@@ -21,6 +21,6 @@ public class Record {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "date")
-    private LocalDateTime date;
+    @Column(name = "createdDate")
+    private LocalDateTime createdDate;
 }
