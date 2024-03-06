@@ -3,13 +3,13 @@ package com.voronina.gb8.services;
 import com.voronina.gb8.aspects.TrackUserAction;
 import com.voronina.gb8.model.Record;
 import com.voronina.gb8.repositories.RecordRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RecordService implements RecordServiceInterface{
 
     private final RecordRepository recordRepository;
@@ -35,18 +35,18 @@ public class RecordService implements RecordServiceInterface{
     @Override
     @TrackUserAction
     public Record update(Record record) {
-        Record noteByID = getRecordById(record.getId());
+        Record recordById = getRecordById(record.getId());
 
-        noteByID.setName(record.getName());
-        noteByID.setContent(record.getContent());
+        recordById.setName(record.getName());
+        recordById.setContent(record.getContent());
 
-        return recordRepository.save(noteByID);
+        return recordRepository.save(recordById);
     }
 
     @Override
     @TrackUserAction
     public void deleteById(Long id) {
-        Record noteById = getRecordById(id);
-        recordRepository.delete(noteById);
+        Record recordById = getRecordById(id);
+        recordRepository.delete(recordById);
     }
 }

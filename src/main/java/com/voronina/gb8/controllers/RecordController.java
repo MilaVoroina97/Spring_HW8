@@ -1,7 +1,6 @@
 package com.voronina.gb8.controllers;
 
 import com.voronina.gb8.model.Record;
-import com.voronina.gb8.services.RecordService;
 import com.voronina.gb8.services.RecordServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,7 @@ public class RecordController {
      */
     @PostMapping
     public ResponseEntity<Record> createRecord(@RequestBody Record record){
-        record.setDate(LocalDateTime.now());
+        record.setCreatedDate(LocalDateTime.now());
         return new ResponseEntity<>(recordService.create(record), HttpStatus.CREATED);
     }
 
